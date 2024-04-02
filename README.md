@@ -1,17 +1,14 @@
 # how to use `anon-core`
 
-## 1. with `Access-Token`
-```json
-"dependencies": {
-   "anon-core": "git+https://<username>:<access_token>@github.com/padjiwib/anon-core"
-}
+## 1. with `yarn` and `npm`
 ```
-## 2. with `ssh`
-```json
-"dependencies": {
-   "anon-core": "git+ssh://git@github.com/padjiwib/anon-core"
-}
+// npm
+npm i anon-core
+
+// yarn
+yarn add anon-core
 ```
+
 
 ## how to import
 ```javascript
