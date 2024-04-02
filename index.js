@@ -1,9 +1,9 @@
-import textAggregate from './src/constants/textAggregate'
+import FomoString from './src/constants/FomoString'
 import HttpErrorMessages from './src/HttpErrorMessages'
 import Global from './src/constants/Global'
 import BaseCallApi from './src/BaseCallApi'
 export {
-  textAggregate,
+  FomoString,
   HttpErrorMessages,
   Global,
   BaseCallApi

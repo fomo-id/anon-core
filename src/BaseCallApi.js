@@ -1,6 +1,6 @@
 import Global from './constants/Global'
 import HttpErrorMessages from './HttpErrorMessages'
-import textAggregate from './constants/textAggregate'
+import FomoString from './constants/FomoString'
 
 class BaseCallApi {
   constructor(devMode) {
@@ -43,15 +43,15 @@ class BaseCallApi {
       // to debug which URL is erroring out
       const alertBody = Global.user.inner?.id && Global.admin?.id && Global.user.inner?.id === Global.admin?.id
         ? errorLog
-        : textAggregate.badConnection;
-      Alert.alert(textAggregate.badConnectionTitle, alertBody, [
+        : FomoString.badConnection;
+      Alert.alert(FomoString.badConnectionTitle, alertBody, [
         {
-          text: textAggregate.retry,
+          text: FomoString.retry,
           onPress: () => {
             return _asyncFetch(subUrl, method, body, onSuccess, onFailure, onUnauthorized, auth, customMessage)
           },
         },
-        { text: textAggregate.cancel, style: "cancel", onPress: () => onFailure && onFailure() },
+        { text: FomoString.cancel, style: "cancel", onPress: () => onFailure && onFailure() },
       ]);
       return;
     }
@@ -79,7 +79,7 @@ class BaseCallApi {
       if (onFailure) onFailure();
       this.showAlert(customMessage.status422, ignoreAlert);
     } else {
-      this.showAlert(textAggregate.unknownErrorMessage, ignoreAlert);
+      this.showAlert(FomoString.unknownErrorMessage, ignoreAlert);
       if (onFailure) onFailure();
     }
     console.log(`Status ${response.status} for: ${subUrl}`)
