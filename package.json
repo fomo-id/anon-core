@@ -1,0 +1,19 @@
+{
+  "name": "anon-core",
+  "description": "",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fomo-id/anon-core"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fomo-id/anon-core/issues"
+  },
+  "homepage": "https://github.com/fomo-id/anon-core"
+}
