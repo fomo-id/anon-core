@@ -1,10 +1,10 @@
 {
   "name": "anon-core",
   "description": "",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "update":"npm version patch ",
+    "update": "npm version patch ",
     "publish": "npm publish"
   },
   "repository": {
