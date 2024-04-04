@@ -70,10 +70,7 @@ class MobileCallApiAdapter extends BaseCallApi{
       Alert.alert("", message);
     }
    }
-   handleReload(onReload,errorLog,onFailure) {
-    const alertBody = Global.user.inner?.id && Global.admin?.id && Global.user.inner?.id === Global.admin?.id
-      ? errorLog
-      : FomoString.badConnection;
+   handleReload(onReload,alertBody,onFailure) {
     Alert.alert(FomoString.badConnectionTitle, alertBody, [
       {
         text: FomoString.retry,
