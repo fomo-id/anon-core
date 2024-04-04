@@ -1,22 +1,10 @@
-import { BaseCallApi } from "./src/BaseCallApi";
-import HttpErrorMessages from "./src/HttpErrorMessages";
-
-declare module 'FomoString' {
-  const FomoString: any;
-  export default FomoString;
-}
-
-declare module 'HttpErrorMessages' {
-  const HttpErrorMessages: HttpErrorMessages;
-  export default HttpErrorMessages;
-}
-
-declare module 'Global' {
-  const Global: any;
-  export default Global;
-}
-
-declare module 'BaseCallApi' {
-  const BaseCallApi: BaseCallApi;
-  export default BaseCallApi;
+import FomoString from './src/constants/FomoString'
+import HttpErrorMessages from './src/HttpErrorMessages'
+import Global from './src/constants/Global'
+import BaseCallApi from './src/BaseCallApi'
+export {
+  FomoString,
+  HttpErrorMessages,
+  Global,
+  BaseCallApi
 }

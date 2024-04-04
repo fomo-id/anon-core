@@ -44,15 +44,9 @@ class BaseCallApi {
       const alertBody = Global.user.inner?.id && Global.admin?.id && Global.user.inner?.id === Global.admin?.id
         ? errorLog
         : FomoString.badConnection;
-      Alert.alert(FomoString.badConnectionTitle, alertBody, [
-        {
-          text: FomoString.retry,
-          onPress: () => {
-            return _asyncFetch(subUrl, method, body, onSuccess, onFailure, onUnauthorized, auth, customMessage)
-          },
-        },
-        { text: FomoString.cancel, style: "cancel", onPress: () => onFailure && onFailure() },
-      ]);
+      this.handleReload(() => {
+        return asyncFetch(subUrl, method, body, onSuccess, onFailure, onUnauthorized, auth, customMessage)
+      })
       return;
     }
     if (response.status >= 200 && response.status < 300) {
@@ -88,5 +82,9 @@ class BaseCallApi {
     return {}
   }
   showAlert(message, ignore) { }
+  handleReload(onReload) {
+    // tambahakan alert untuk menampilkan error badConnection
+    // return onReload()
+  }
 }
 export default BaseCallApi;

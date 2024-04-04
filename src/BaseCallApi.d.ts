@@ -9,11 +9,12 @@ declare class BaseCallApi {
     body: any,
     onSuccess: (res:any) => void,
     onFailure: (err:any) => void,
-    onUnauthorized: () => void,
-    auth: any,
+    onUnauthorized: () => void | null | undefined,
+    auth: boolean ,
     customMessage?: HttpErrorMessages,
     ignoreAlert?: boolean
   ): Promise<void>;
   setHeader(): {};
-  showAlert(message: string, ignore: any): void;
+  showAlert(message: string, ignore: boolean): void;
 }
+export default BaseCallApi;
