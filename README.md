@@ -48,3 +48,39 @@ export async function asyncFetchUnauthWithBody(subUrl, method, body, onSuccess, 
   return await webCallApiAdapter.asyncFetch(subUrl, method, body, onSuccess, onFailure, null, false, customMessage, ignoreAlert);
 }
 ```
+
+## `BaseCallApi` on mobile
+filename `asyncFetch.js`
+```javascript
+import {BaseCallApi, FomoString, Global} from "anon-core"
+import * as Application from 'expo-application';
+import { Alert } from 'react-native'
+
+class MobileCallApiAdapter extends BaseCallApi{
+   constructor(){
+    super(true);
+   }
+   setHeader() {
+     return {
+      'App-Version': Application.nativeApplicationVersion
+     }
+   }
+   showAlert(message, ignore): void {
+    if (!ignore) {
+      Alert.alert("", message);
+    }
+   }
+   handleReload(onReload,errorLog,onFailure) {
+    const alertBody = Global.user.inner?.id && Global.admin?.id && Global.user.inner?.id === Global.admin?.id
+      ? errorLog
+      : FomoString.badConnection;
+    Alert.alert(FomoString.badConnectionTitle, alertBody, [
+      {
+        text: FomoString.retry,
+        onPress: () => onReload()
+      },
+      { text: FomoString.cancel, style: "cancel", onPress: () => onFailure && onFailure() },
+    ]);
+  }
+}
+```
