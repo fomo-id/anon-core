@@ -46,7 +46,7 @@ class BaseCallApi {
         : FomoString.badConnection;
       this.handleReload(() => {
         return asyncFetch(subUrl, method, body, onSuccess, onFailure, onUnauthorized, auth, customMessage)
-      })
+      }, alertBody, onFailure)
       return;
     }
     if (response.status >= 200 && response.status < 300) {
@@ -82,9 +82,6 @@ class BaseCallApi {
     return {}
   }
   showAlert(message, ignore) { }
-  handleReload(onReload) {
-    // tambahakan alert untuk menampilkan error badConnection
-    // return onReload()
-  }
+  handleReload(onReload, alertBody, onFailure) { }
 }
 export default BaseCallApi;

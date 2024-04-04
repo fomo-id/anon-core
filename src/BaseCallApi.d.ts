@@ -16,5 +16,6 @@ declare class BaseCallApi {
   ): Promise<void>;
   setHeader(): {};
   showAlert(message: string, ignore: boolean): void;
+  handleReload(onReload:()=>void, alertBody:string, onFailure:()=>void| null | undefined):void;
 }
 export default BaseCallApi;
