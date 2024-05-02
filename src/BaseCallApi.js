@@ -52,36 +52,57 @@ class BaseCallApi {
     if (response.status >= 200 && response.status < 300) {
       if (onSuccess) await onSuccess(response);
     } else if (response.status === 401) {
-      this.showAlert(customMessage.status401, ignoreAlert);
+      this.showAlert(customMessage.status401, response.status, ignoreAlert);
       if (onUnauthorized) onUnauthorized();
     } else if (response.status === 400) {
-      this.showAlert(customMessage.status400, ignoreAlert);
-      if (onFailure) onFailure();
+      this.showAlert(customMessage.status400, response.status, ignoreAlert);
+      if (onFailure) onFailure({
+        status: response.status,
+        message: customMessage.status400
+      });
     } else if (response.status === 404) {
-      this.showAlert(customMessage.status404, ignoreAlert);//TODO: customize this
-      if (onFailure) onFailure();
+      this.showAlert(customMessage.status404, response.status, ignoreAlert);//TODO: customize this
+      if (onFailure) onFailure({
+        status: response.status,
+        message: customMessage.status404
+      });
     } else if (response.status === 403) {
-      this.showAlert(customMessage.status403, ignoreAlert);
-      if (onFailure) onFailure();
+      this.showAlert(customMessage.status403, response.status, ignoreAlert);
+      if (onFailure) onFailure({
+        status: response.status,
+        message: customMessage.status403
+      });
     } else if (response.status === 409) {
-      if (onFailure) onFailure();
-      this.showAlert(customMessage.status409, ignoreAlert);
+      if (onFailure) onFailure({
+        status: response.status,
+        message: customMessage.status409
+      });
+      this.showAlert(customMessage.status409, response.status, ignoreAlert);
     } else if (response.status === 413) {
-      if (onFailure) onFailure();
-      this.showAlert(customMessage.status413, ignoreAlert);
+      if (onFailure) onFailure({
+        status: response.status,
+        message: customMessage.status413
+      });
+      this.showAlert(customMessage.status413, response.status, ignoreAlert);
     } else if (response.status === 422) {
-      if (onFailure) onFailure();
-      this.showAlert(customMessage.status422, ignoreAlert);
+      if (onFailure) onFailure({
+        status: response.status,
+        message: customMessage.status422
+      });
+      this.showAlert(customMessage.status422, response.status, ignoreAlert);
     } else {
-      this.showAlert(FomoString.unknownErrorMessage, ignoreAlert);
-      if (onFailure) onFailure();
+      this.showAlert(FomoString.unknownErrorMessage, response.status, ignoreAlert);
+      if (onFailure) onFailure({
+        status: response.status,
+        message: FomoString.unknownErrorMessage
+      });
     }
     console.log(`Status ${response.status} for: ${subUrl}`)
   }
   setHeader() {
     return {}
   }
-  showAlert(message, ignore) { }
+  showAlert(message, status, ignore) { }
   handleReload(onReload, alertBody, onFailure) { }
 }
 export default BaseCallApi;
