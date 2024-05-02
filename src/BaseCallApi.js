@@ -104,5 +104,8 @@ class BaseCallApi {
   }
   showAlert(message, status, ignore) { }
   handleReload(onReload, alertBody, onFailure) { }
+  async asyncFetchV2(payload) {
+    this.asyncFetch(payload.subUrl, payload.method, payload.body, payload.onSuccess, payload.onFailure, payload.onUnauthorized, payload.auth, payload.customMessage, payload.ignoreAlert)
+  }
 }
 export default BaseCallApi;
