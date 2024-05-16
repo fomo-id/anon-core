@@ -12,28 +12,23 @@ yarn add anon-core
 
 ## how to import
 ```javascript
-import {BaseCallApi} from 'anon-core'
+import {BaseCallApi,Global} from 'anon-core'
 ```
 
 ## `BaseCallApi` on web
 filename `asyncFetch.ts`
 ```typescript
 class WebCallApiAdapter extends BaseCallApi{
-   constructor(){
-    super(true);
-   }
    setHeader() {
      // custom header
      return {}
    }
-   showAlert(message: string, ignore: boolean): void {
+   showAlert(message: string, status :number, ignore: boolean): void {
      // custom alert
    }
-   handleReload(onReload) {
-    // custom alert for error badConnection
-    // return onReload()
-  }
 }
+// use `Global.baseUrl` for switch server
+// use `Global.encodedAuth` for passing token auth
 
 const webCallApiAdapter = new WebCallApiAdapter()
 
@@ -57,9 +52,6 @@ import * as Application from 'expo-application';
 import { Alert } from 'react-native'
 
 class MobileCallApiAdapter extends BaseCallApi{
-   constructor(){
-    super(true);
-   }
    setHeader() {
      return {
       'App-Version': Application.nativeApplicationVersion
@@ -70,14 +62,6 @@ class MobileCallApiAdapter extends BaseCallApi{
       Alert.alert("", message);
     }
    }
-   handleReload(onReload,alertBody,onFailure) {
-    Alert.alert(FomoString.badConnectionTitle, alertBody, [
-      {
-        text: FomoString.retry,
-        onPress: () => onReload()
-      },
-      { text: FomoString.cancel, style: "cancel", onPress: () => onFailure && onFailure() },
-    ]);
-  }
 }
 ```
+
