@@ -338,7 +338,7 @@ export default {
   unprocessableEntityMessage: "Pastikan teks yang ada masukkan valid.",
   badRequestMessage: "Coba cek kembali request yang anda kirim",
   subfomoAlreadyTaken: "Subfomo dengan nama ini sudah terpakai",
-  badConnection: "Gagal memuat konten. Tap refresh atau periksa koneksi internet kamu",
+  badConnection: "Gagal memuat konten. Refresh atau periksa koneksi internet kamu",
   badConnectionTitle: "Terjadi Kesalahan",
   deleteAccount: 'Hapus akun',
   searchSubfomo: "Search subfomo",

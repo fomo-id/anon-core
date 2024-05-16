@@ -17,7 +17,7 @@ type PayloadType = {
 }
 
 declare class BaseCallApi {
-  constructor(devMode: boolean);
+  constructor();
 
   asyncFetch(
     subUrl: string,
@@ -32,7 +32,6 @@ declare class BaseCallApi {
   ): Promise<void>;
   setHeader(): {};
   showAlert(message: string, status :number, ignore: boolean): void;
-  handleReload(onReload:()=>void, alertBody:string, onFailure:()=>void| null | undefined):void;
   asyncFetchV2(payload:PayloadType): Promise<void>;
 }
 export default BaseCallApi;

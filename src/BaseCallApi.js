@@ -3,8 +3,7 @@ import HttpErrorMessages from './HttpErrorMessages'
 import FomoString from './constants/FomoString'
 
 class BaseCallApi {
-  constructor(devMode) {
-    this.baseUrl = devMode ? Global.baseUrlStage : Global.baseUrl;
+  constructor() {
     this.defaultHttpErrorMessages = new HttpErrorMessages()
   }
 
@@ -31,7 +30,7 @@ class BaseCallApi {
       properties.headers.append('Authorization', 'Basic ' + Global.encodedAuth)
     }
 
-    const fullUrl = this.baseUrl + subUrl
+    const fullUrl = Global.baseUrl + subUrl
     console.log('Executing ' + fullUrl)
     let response;
     try {
@@ -44,9 +43,11 @@ class BaseCallApi {
       const alertBody = Global.user.inner?.id && Global.admin?.id && Global.user.inner?.id === Global.admin?.id
         ? errorLog
         : FomoString.badConnection;
-      this.handleReload(() => {
-        return asyncFetch(subUrl, method, body, onSuccess, onFailure, onUnauthorized, auth, customMessage)
-      }, alertBody, onFailure)
+      this.showAlert(alertBody, response.status, ignoreAlert);
+      if (onFailure) onFailure({
+        status: response.status,
+        message: alertBody
+      });
       return;
     }
     if (response.status >= 200 && response.status < 300) {
@@ -103,7 +104,6 @@ class BaseCallApi {
     return {}
   }
   showAlert(message, status, ignore) { }
-  handleReload(onReload, alertBody, onFailure) { }
   async asyncFetchV2(payload) {
     this.asyncFetch(payload.subUrl, payload.method, payload.body, payload.onSuccess, payload.onFailure, payload.onUnauthorized, payload.auth, payload.customMessage, payload.ignoreAlert)
   }
