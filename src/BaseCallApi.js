@@ -1,4 +1,4 @@
-import Global from './constants/Global'
+import GlobalCore from './constants/GlobalCore'
 import HttpErrorMessages from './HttpErrorMessages'
 import FomoString from './constants/FomoString'
 
@@ -27,10 +27,10 @@ class BaseCallApi {
     }
 
     if (auth) {
-      properties.headers.append('Authorization', 'Basic ' + Global.encodedAuth)
+      properties.headers.append('Authorization', 'Basic ' + GlobalCore.encodedAuth)
     }
 
-    const fullUrl = Global.baseUrl + subUrl
+    const fullUrl = GlobalCore.baseUrl + subUrl
     console.log('Executing ' + fullUrl)
     let response;
     try {
@@ -40,7 +40,7 @@ class BaseCallApi {
       const errorLog = 'Request timeout on ' + fullUrl + ` [err=${error}]`
       console.log(errorLog);
       // to debug which URL is erroring out
-      const alertBody = Global.user.inner?.id && Global.admin?.id && Global.user.inner?.id === Global.admin?.id
+      const alertBody = GlobalCore.user.inner?.id && GlobalCore.admin?.id && GlobalCore.user.inner?.id === GlobalCore.admin?.id
         ? errorLog
         : FomoString.badConnection;
       this.showAlert(alertBody, response.status, ignoreAlert);

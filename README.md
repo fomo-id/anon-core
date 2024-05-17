@@ -47,7 +47,7 @@ export async function asyncFetchUnauthWithBody(subUrl, method, body, onSuccess, 
 ## `BaseCallApi` on mobile
 filename `asyncFetch.js`
 ```javascript
-import {BaseCallApi, FomoString, Global} from "anon-core"
+import {BaseCallApi, FomoString, GlobalCore} from "anon-core"
 import * as Application from 'expo-application';
 import { Alert } from 'react-native'
 
