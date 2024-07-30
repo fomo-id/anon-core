@@ -11,7 +11,7 @@ class BaseCallApi {
     const AbortController = window.AbortController;
     const controller = new AbortController();
     const signal = controller.signal;
-    const timeoutId = setTimeout(() => { controller.abort(); }, 30000);
+    const timeoutId = setTimeout(() => { controller.abort(); }, 10000);
     const contentType = body instanceof FormData ? "multipart/form-data;" : 'application/json';
     let properties = {
       method: method,
@@ -43,9 +43,10 @@ class BaseCallApi {
       const alertBody = GlobalCore.user.inner?.id && GlobalCore.admin?.id && GlobalCore.user.inner?.id === GlobalCore.admin?.id
         ? errorLog
         : FomoString.badConnection;
-      this.showAlert(alertBody, response.status, ignoreAlert);
+      const statusTimeout = 408
+      this.showAlert(alertBody, response?.status || statusTimeout, ignoreAlert);
       if (onFailure) onFailure({
-        status: response.status,
+        status: response?.status || statusTimeout,
         message: alertBody
       });
       return;
