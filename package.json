@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/fomo-id/anon-core/issues"
   },
-  "homepage": "https://github.com/fomo-id/anon-core"
+  "homepage": "https://github.com/fomo-id/anon-core",
+  "dependencies": {
+    "moment": "^2.30.1"
+  }
 }
