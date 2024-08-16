@@ -3,8 +3,9 @@ import HttpErrorMessages from './HttpErrorMessages'
 import FomoString from './constants/FomoString'
 
 class BaseCallApi {
-  constructor() {
+  constructor(debugMode) {
     this.defaultHttpErrorMessages = new HttpErrorMessages()
+    this.debugMode = debugMode
   }
 
   async asyncFetch(subUrl, method, body, onSuccess, onFailure, onUnauthorized, auth, customMessage = this.defaultHttpErrorMessages, ignoreAlert) {
@@ -31,14 +32,18 @@ class BaseCallApi {
     }
 
     const fullUrl = GlobalCore.baseUrl + subUrl
-    console.log('Executing ' + fullUrl)
+    if (this.debugMode) {
+      console.log('Executing ' + fullUrl)
+    }
     let response;
     try {
       response = await fetch(fullUrl, properties);
       clearTimeout(timeoutId);
     } catch (error) {
       const errorLog = 'Request timeout on ' + fullUrl + ` [err=${error}]`
-      console.log(errorLog);
+      if (this.debugMode) {
+        console.log(errorLog);
+      }
       // to debug which URL is erroring out
       const alertBody = GlobalCore.user.inner?.id && GlobalCore.admin?.id && GlobalCore.user.inner?.id === GlobalCore.admin?.id
         ? errorLog
@@ -99,7 +104,9 @@ class BaseCallApi {
         message: FomoString.unknownErrorMessage
       });
     }
-    console.log(`Status ${response.status} for: ${subUrl}`)
+    if (this.debugMode) {
+      console.log(`Status ${response.status} for: ${subUrl}`)
+    }
   }
   setHeader() {
     return {}

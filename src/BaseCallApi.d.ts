@@ -17,7 +17,7 @@ type PayloadType = {
 }
 
 declare class BaseCallApi {
-  constructor();
+  constructor(debugMode?: boolean);
 
   asyncFetch(
     subUrl: string,
