@@ -1,6 +1,6 @@
 module.exports = {
   baseUrl: 'https://fomo.azurewebsites.net/',
-  baseUrlStage: "https://fomo-stage.azurewebsites.net/",
+  baseUrlStage: "https://fomo-stage2.azurewebsites.net/",
   androidAppId: 'id.anon.android',
   iosAppId: '1500671850',
   maxTopicCount: 3,
