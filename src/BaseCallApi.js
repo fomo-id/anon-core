@@ -12,7 +12,7 @@ class BaseCallApi {
     const AbortController = window.AbortController;
     const controller = new AbortController();
     const signal = controller.signal;
-    const timeoutId = setTimeout(() => { controller.abort(); }, 10000);
+    const timeoutId = setTimeout(() => { controller.abort(); }, 30000);
     const contentType = body instanceof FormData ? "multipart/form-data;" : 'application/json';
     let properties = {
       method: method,
