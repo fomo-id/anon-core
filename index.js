@@ -5,6 +5,7 @@ import GlobalCore from './src/constants/GlobalCore'
 import BaseCallApi from './src/BaseCallApi'
 import { timeChatFormat, timeFormat } from './src/functions/timeFormat'
 import { handleKeyboardTyping } from './src/functions/handleKeyboardTyping'
+import FetchConfigBuilder from './src/builder/FetchConfigBuilder'
 export {
   FomoString,
   HttpErrorMessages,
@@ -13,5 +14,6 @@ export {
   fomoColors,
   timeFormat,
   timeChatFormat,
-  handleKeyboardTyping
+  handleKeyboardTyping,
+  FetchConfigBuilder
 }
