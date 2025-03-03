@@ -38,7 +38,7 @@ export const mapReputationByKey = (reputations: Reputation[]): ReputationMap => 
 
 export const mapReputationLevelByValue = (reputations: ReputationLevel[]): ReputationLevelMap => {
   return reputations.reduce((acc, item) => {
-    acc[item.key] = item;
+    acc[item.value] = item;
     return acc;
-  }, {} as ReputationLevel);
+  }, {} as ReputationLevelMap);
 };
