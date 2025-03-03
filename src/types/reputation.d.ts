@@ -9,3 +9,11 @@ export interface Reputation {
   key: string;
   imageUrl: string;
 }
+
+export type ReputationMap = {
+  [key: string]: Reputation;
+};
+
+export type ReputationLevelMap = {
+  [key: number]: ReputationLevel;
+};

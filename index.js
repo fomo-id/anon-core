@@ -6,6 +6,7 @@ import BaseCallApi from './src/BaseCallApi'
 import { timeChatFormat, timeFormat } from './src/functions/timeFormat'
 import { handleKeyboardTyping } from './src/functions/handleKeyboardTyping'
 import FetchConfigBuilder from './src/builder/FetchConfigBuilder'
+import { getReputationImageUrl, getReputationPercentage, getReputationLevel, mapReputationByKey, mapReputationLevelByValue } from "./src/functions/reputation"
 export {
   FomoString,
   HttpErrorMessages,
@@ -15,5 +16,7 @@ export {
   timeFormat,
   timeChatFormat,
   handleKeyboardTyping,
-  FetchConfigBuilder
+  FetchConfigBuilder,
+  getReputationImageUrl, getReputationPercentage, getReputationLevel,
+  mapReputationByKey, mapReputationLevelByValue
 }

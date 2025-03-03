@@ -16,3 +16,16 @@ export const getReputationPercentage = (data, level, currentPoint) => {
 
   return ((currentPoint - lowerBound) / (upperBound - lowerBound)) * 100;
 };
+
+export const mapReputationByKey = (reputations) => {
+  return reputations.reduce((acc, item) => {
+    acc[item.key] = item
+    return acc;
+  }, {});;
+}
+export const mapReputationLevelByValue = (reputationLevels) => {
+  return reputationLevels.reduce((acc, item) => {
+    acc[item.key] = item
+    return acc;
+  }, {});;
+}
