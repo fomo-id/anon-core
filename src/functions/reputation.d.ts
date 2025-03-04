@@ -1,4 +1,9 @@
-import { Reputation, ReputationLevel, ReputationLevelMap, ReputationMap } from "../types/reputation";
+import {
+  Reputation,
+  ReputationLevel,
+  ReputationLevelMap,
+  ReputationMap,
+} from "../types/reputation";
 
 export const getReputationImageUrl = (
   data: Reputation[],
@@ -21,22 +26,25 @@ export const getReputationPercentage = (
 ) => {
   const selectedValue = getReputationLevel(data, level);
   if (!selectedValue) return 0;
-
   const { lowerBound, upperBound } = selectedValue;
-
-  if (upperBound === lowerBound) return 0;
+  if (upperBound === null) return 100;
+  else if (upperBound === lowerBound || lowerBound === null) return 0;
 
   return ((currentPoint - lowerBound) / (upperBound - lowerBound)) * 100;
 };
 
-export const mapReputationByKey = (reputations: Reputation[]): ReputationMap => {
+export const mapReputationByKey = (
+  reputations: Reputation[]
+): ReputationMap => {
   return reputations.reduce((acc, item) => {
     acc[item.key] = item;
     return acc;
   }, {} as ReputationMap);
 };
 
-export const mapReputationLevelByValue = (reputations: ReputationLevel[]): ReputationLevelMap => {
+export const mapReputationLevelByValue = (
+  reputations: ReputationLevel[]
+): ReputationLevelMap => {
   return reputations.reduce((acc, item) => {
     acc[item.value] = item;
     return acc;

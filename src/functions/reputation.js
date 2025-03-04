@@ -12,7 +12,8 @@ export const getReputationPercentage = (data, level, currentPoint) => {
 
   const { lowerBound, upperBound } = selectedValue;
 
-  if (upperBound === lowerBound) return 0;
+  if (upperBound === null) return 100;
+  else if (upperBound === lowerBound || lowerBound === null) return 0;
 
   return ((currentPoint - lowerBound) / (upperBound - lowerBound)) * 100;
 };
