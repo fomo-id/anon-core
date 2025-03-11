@@ -21,7 +21,7 @@ declare const getReputationPercentage: (
   currentPoint: number
 ) => number;
 
-declare const calculateReputationLevel :(lowerBound:number, upperBound:number, value:number)=> number;
+declare const calculateReputationLevel :(lowerBound:number|null, upperBound:number|null, value:number)=> number;
 
 declare const mapReputationByKey: (reputations: Reputation[]) => ReputationMap;
 
